@@ -94,6 +94,7 @@ getGame =  (gameId, name) => {
             return {
                 summonerName: user.summonerName,
                 kda: user.kills + '/' + user.deaths + '/' + user.assists,
+                championName: user.championName,
                 win: user.win,
                 sameTeam: i < 5 ? aux : !aux
             }
