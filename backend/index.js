@@ -1,6 +1,6 @@
 // Declaracion de paquetes
 const express = require('express')
-const bodyParser = require('body-parser')
+const bodyparser = require('body-parser')
 const cors = require('cors')
 require('dotenv').config()
 
@@ -11,11 +11,12 @@ const app = express()
 app.use(cors())
 
 // Configuracion del body-parser
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+app.use(bodyparser.urlencoded({ extended: false }))
+app.use(bodyparser.json())
 
 // Middleware
 app.get('/', (req, res) => {
+    console.log(req.body);
     res.json({
         error: null,
         msg: "Todo funciona correctamente"
@@ -23,7 +24,9 @@ app.get('/', (req, res) => {
 })
 
 // Importacion de rutas
+const userRoutes = require('./routes/user')
 
+app.use('/user/', userRoutes)
 
 // Inicializacion del servidor
 const port = process.env.PORT || 3000
